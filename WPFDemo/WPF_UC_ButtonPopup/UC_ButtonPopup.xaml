@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="RCApp_Win.View.Common.UC_ButtonPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RCApp_Win.View.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btn_ButtonPopup" Grid.Row="0" Height="24" Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_ButtonPopup}}}"
+                Content="更多操作" Style="{StaticResource CancelButtonStyle}" HorizontalAlignment="Left" FontSize="12" Click="btn_ButtonPopup_Click" MouseLeave="popup_ButtonPopup_MouseLeave"/>
+        <ToggleButton Name="tg_ButtonPopup" Width="0" Background="Transparent" Cursor="Hand"/>
+        <Popup Name="popup_ButtonPopup" Grid.Row="1" AllowsTransparency="True" MouseLeave="popup_ButtonPopup_MouseLeave"
+               Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_ButtonPopup}}}" 
+               IsOpen="{Binding ElementName=tg_ButtonPopup, Path=IsChecked, Mode=TwoWay}">
+            <Border BorderThickness="1" BorderBrush="LightGray" Width="Auto" Height="Auto">
+                <ListBox x:Name="listBox_ButtonPopup" Style="{StaticResource MenuListBoxStyle}" 
+                         Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_ButtonPopup}}}" 
+                         Height="auto" HorizontalContentAlignment="Center"
+                     Background="#ffffff" BorderThickness="0" Grid.RowSpan="2" >
+                    <ListBox.Resources>
+                        <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+                            <Setter Property="SnapsToDevicePixels" Value="true"/>
+                            <Setter Property="OverridesDefaultStyle" Value="true"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <local:UC_RadioButton x:Name="radioButton" Content="{TemplateBinding Content}" Style="{StaticResource RadioBtn_gdHead_Style1}" 
+                                                          GroupName="ButtonPopup" FontSize="12" VerticalAlignment="Center"  HorizontalAlignment="Center" 
+                                                              Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_ButtonPopup}}}"
+                                                          IsChecked="{Binding Path=IsSelected, Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" Click="radioButton_Click">
+                                        </local:UC_RadioButton>
+                                        <ControlTemplate.Triggers>
+                                            <!--<Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Background" Value="#47CFA7" TargetName="radioButton"/>
+                                            </Trigger>-->
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Background" Value="#47CFA7" TargetName="radioButton"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.Resources>
+                </ListBox>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

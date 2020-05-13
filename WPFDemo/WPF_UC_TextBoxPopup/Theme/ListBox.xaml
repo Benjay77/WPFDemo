@@ -1,0 +1,314 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:icnvt="clr-namespace:JP.HCZZP.WPFApp.Infrastructure.Converter;assembly=JP.HCZZP.WPFApp.Infrastructure"
+                    xmlns:ip="clr-namespace:JP.HCZZP.WPFApp.Infrastructure;assembly=JP.HCZZP.WPFApp.Infrastructure"
+                    xmlns:res="clr-namespace:JP.HCZZP.WPFApp.Instruct.Modules.ResourceLibrary;assembly=JP.HCZZP.WPFApp.Instruct.Modules.ResourceLibrary"
+                    xmlns:c="clr-namespace:JP.HCZZP.WPFApp.Infrastructure.Controls;assembly=JP.HCZZP.WPFApp.Infrastructure"
+                    xmlns:uc="clr-namespace:JP.HCZZP.WPFApp.QW.Modules.ControlLibrary.UserControls"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <PathGeometry x:Key="Triangle" Figures="M 0,0 L 10,10 0,20 Z" />
+    <icnvt:BoolToValueConverter x:Key="BoolToValueConverter" FalseValue="Collapsed" TrueValue="Visible"/>
+    <ItemsPanelTemplate  x:Key="QWDutyListWarpPanel">
+        <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical"></WrapPanel>
+    </ItemsPanelTemplate>
+    <ItemsPanelTemplate  x:Key="QWDutyListWarpPanelHorizontal">
+        <WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Orientation="Horizontal"></WrapPanel>
+    </ItemsPanelTemplate>
+
+    <ItemsPanelTemplate  x:Key="SettingListWarpPanelHorizontal">
+        <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Stretch" Orientation="Horizontal"></WrapPanel>
+    </ItemsPanelTemplate>
+    
+    <Style x:Key="QWDutyListItemWithoutStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="OverridesDefaultStyle" Value="False"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Background" Value="#0B4470"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="UseLayoutRounding" Value="False"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" >
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                           
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="QWDutyListBoxWithoutStyle" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource QWDutyListItemWithoutStyle}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" TargetName="Bd" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="QWDutyListItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="OverridesDefaultStyle" Value="False"/>
+        <Setter Property="Margin" Value="0 6"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static res:CustomResources.FourForeKey}}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border Margin="0" Width="420" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding DataContext.ShowDetailCommand,RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor}}" CommandParameter="{Binding ElementName=TriangleIcon}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter Property="Fill" Value="{DynamicResource ListBoxSelectedBorder}"/>
+                                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                    <Setter Property="UseLayoutRounding" Value="True"/>
+                                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="9"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Name="borderGrid" HorizontalAlignment="Stretch" Opacity="0" VerticalAlignment="Stretch">
+                                <!--左上角-->
+                                <Rectangle Width="1" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                <Rectangle Width="10" Height="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                                <!--左下角-->
+                                <Rectangle Width="1" Height="10" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                <Rectangle Width="10" Height="1" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
+
+                                <!--右上角-->
+                                <Rectangle Width="1" Height="10" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                                <Rectangle Width="10" Height="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+                                <!--右下角-->
+                                <Rectangle Width="1" Height="10"  HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                <Rectangle Width="10" Height="1" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
+
+                            </Grid>
+                            <Border Margin="4" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   SnapsToDevicePixels="true">
+                                <Grid>
+                                    <Rectangle Fill="{DynamicResource {x:Static res:CustomResources.FourForeKey}}" Stroke="{DynamicResource {x:Static res:CustomResources.ThreeForeKey}}" StrokeThickness="1" Name="NormalRectangle" Stretch="Fill"/>
+                                    <Rectangle Fill="{DynamicResource {x:Static res:CustomResources.TenForeKey}}" Stroke="{DynamicResource {x:Static res:CustomResources.OneForeKey}}" StrokeThickness="1" Name="MouseoverRectangle" Opacity="0" Stretch="Fill"/>
+                                    <Rectangle Fill="{DynamicResource {x:Static res:CustomResources.TenForeKey}}" Stroke="{DynamicResource {x:Static res:CustomResources.SevenForeKey}}" StrokeThickness="1" Name="SelectedRectangle" Opacity="0" Stretch="Fill"/>
+                                    <ContentPresenter Margin="5" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Grid>
+
+                            </Border>
+                            <Path Tag="{Binding ID}" Opacity="0" Visibility="{Binding IsSelected,Converter={StaticResource BoolToValueConverter}}" Grid.ColumnSpan="2"  Grid.Column="0" VerticalAlignment="Center"  Width="10" Height="20" HorizontalAlignment="Right" Name="TriangleIcon" Fill="{DynamicResource ListBoxSelectedBorder}" Stretch="Uniform" Data="{StaticResource Triangle}">
+
+                            </Path>
+                            <!--<c:PopupEx  Name="Popup"
+                        PlacementTarget="{Binding ElementName=TriangleIcon}"
+                        PopupAnimation="Fade" 
+                        IsOpen="{Binding IsSelected}"
+                        AllowsTransparency="True" Focusable="False" HorizontalOffset="5"
+                        Placement="Relative" StaysOpen="True" VerticalOffset="0">
+                                <uc:UC_TaskUnplannDetail DataContext="{Binding DataContext.TaskUnplannDetailViewModel,RelativeSource={RelativeSource AncestorType=ListBox,Mode=FindAncestor}}" Tag="{Binding RelativeSource={RelativeSource AncestorType=ListBox,Mode=FindAncestor}}" Grid.Row="1"/>
+                            </c:PopupEx>-->
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.1" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Selected" >
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.25" Storyboard.TargetName="TriangleIcon" Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                        <DoubleAnimation BeginTime="0:0:0.2" Duration="0:0:0.25" Storyboard.TargetName="SelectedRectangle" Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                        <DoubleAnimation BeginTime="0:0:0.2" Duration="0:0:0.25" Storyboard.TargetName="borderGrid" Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver" >
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0.2" Duration="0:0:0.25" Storyboard.TargetName="MouseoverRectangle" Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unselected" >
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.25" Storyboard.TargetName="TriangleIcon" Storyboard.TargetProperty="Opacity"
+                                                         To="0" />
+                                        <DoubleAnimation BeginTime="0:0:0.2" Duration="0:0:0.25" Storyboard.TargetName="SelectedRectangle" Storyboard.TargetProperty="Opacity"
+                                                         To="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.25" Storyboard.TargetName="MouseoverRectangle" Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.25" Storyboard.TargetName="MouseoverRectangle" Storyboard.TargetProperty="Opacity"
+                                                         To="0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static res:CustomResources.FiveForeKey}}"/>
+                        </MultiTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="QWDutyItemsControl" TargetType="{x:Type ItemsControl}">
+
+        <Setter Property="ItemsPanel" Value="{StaticResource QWDutyListWarpPanelHorizontal}"/>
+        
+        <Setter Property="Background" Value="{DynamicResource ContentBackground}"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource NormalForeground}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0 5"/>
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ItemsControl}">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <ScrollViewer ip:ControlAttachProperty.IsSpecial="True" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Style="{DynamicResource ScrollViewerOnQWDuty}"  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Focusable="false" CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}" Margin="0" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter Margin="0" HorizontalAlignment="Stretch" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+           
+    
+    <Style x:Key="QWDutyList" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="{DynamicResource ContentBackground}"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource NormalForeground}"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0 5"/>
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource QWDutyListItemStyle}"/>
+        <Setter Property="ip:ControlAttachProperty.IsSpecial" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <Grid>
+                            <ScrollViewer ip:ControlAttachProperty.IsSpecial="{TemplateBinding ip:ControlAttachProperty.IsSpecial}" HorizontalAlignment="Stretch" Style="{DynamicResource ScrollViewerOnQWDuty}"  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Focusable="false" CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}" Margin="0" Padding="{TemplateBinding Padding}" x:Name="ScrollViewer">
+                                <ItemsPresenter Margin="0" HorizontalAlignment="Stretch" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+
+                        </Grid>
+                    </Border>
+                    <!--<ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" TargetName="Bd" Value="0.5"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    
+</ResourceDictionary>

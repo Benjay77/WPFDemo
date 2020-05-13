@@ -1,0 +1,12 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WPF_UC_DropDown" x:Class="WPF_UC_DropDown.MainWindow"
+        Title="MainWindow" Height="350" Width="525" >
+    <Grid x:Name="gr_Test" MouseDown="gr_Test_MouseDown" Background="Transparent">
+        <!--<Border x:Name="bd_Test" Height="Auto">-->
+            <StackPanel x:Name="sp" Opacity="1.0">
+                <ContentControl x:Name="ccl" Width="300" Height="24">
+                    <local:UC_DropDown x:Name="uc_DropDown" Height="Auto" Width="300" HorizontalAlignment="Center"/>
+                </ContentControl>
+            </StackPanel>
+        <!--</Border>-->
+    </Grid>
+</Window>

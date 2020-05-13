@@ -1,0 +1,163 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!-- *************************ImageBrush************************* -->
+    <ImageBrush x:Key="QWWindowBackground" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/勤务背景.png" />
+    <ImageBrush x:Key="TaskAddedIMG" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/TaskAddedBG.png"/>
+    <ImageBrush x:Key="QWReportDetailBg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/bg.png"/>
+    <ImageBrush x:Key="QWReportDetailClose" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/关闭.png"/>
+    <ImageBrush x:Key="DytuSettingMenuBG" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/DytuSettingMenuBG.png"/>
+
+    <ImageBrush x:Key="SettingCarBg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/CarSetting/框.png"/>
+    <ImageBrush x:Key="SettingCarReadOnlyBg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/CarSetting/没有权限时框.png"/>
+   
+    <ImageBrush x:Key="SettingTypeBg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/EquipmentSetting/装备概况框.png"/>
+    <ImageBrush x:Key="SettingEquipmentBg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/EquipmentSetting/框.png"/>
+    <ImageBrush x:Key="SettingEquipmentReadOnlyBg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/EquipmentSetting/没有删除权限框.png"/>
+    <ImageBrush x:Key="专题勤务背景" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/勤务部署bg.png"/>
+    <ImageBrush x:Key="专题勤务背景空" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/勤务部署空bg.png"/>
+    <ImageBrush x:Key="专题勤务部署弹框背景" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/部署bg.png"/>
+    <ImageBrush x:Key="专题勤务弹框背景" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/弹框bg.png"/>
+    <ImageBrush x:Key="专题勤务弹框背景1" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/弹框bg1.png"/>
+    <ImageBrush x:Key="SpeacialDuty标题1" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/标题1.png"/>
+    <ImageBrush x:Key="SpeacialDuty标题2" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/标题2.png"/>
+    <ImageBrush x:Key="SpeacialDuty标题3" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/标题小bg.png"/>
+    <ImageBrush x:Key="SpeacialDuty标题4" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/标题小bg3.png"/>
+    <ImageBrush x:Key="SpeacialDuty卡片背景1" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/卡片背景1.png"/>
+    <ImageBrush x:Key="SpeacialDuty卡片背景2" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/卡片背景2.png"/>
+    <ImageBrush x:Key="SpeacialDuty卡片背景3" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/安保区域bg.png"/>
+    <ImageBrush x:Key="SpeacialDuty地图弹窗" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/大弹窗.png"/>
+    <ImageBrush x:Key="SpeacialDuty安保详情" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/小弹窗.png"/>
+    <ImageBrush x:Key="SpeacialDuty未报备bg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/未报备bg.png"/>
+    <ImageBrush x:Key="SpeacialDuty已报备bg" ImageSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/已报备bg.png"/>
+
+    <!-- *************************ImageBrush************************* -->
+
+    <!-- *************************BitmapImage************************* -->
+    <BitmapImage x:Key="TaskCenterBack" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/beijingTaskCenter_part1.png" />
+    <BitmapImage x:Key="TaskCenterBack2" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/beijingTaskCenter_part2.png" />
+    <BitmapImage x:Key="HomeTabMouseEnter" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/首页导航-鼠标移入.png" />
+    <BitmapImage x:Key="HomeTabMouseUnSelected" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/首页导航-未选中.png" />
+    <BitmapImage x:Key="HomeTabMouseSelected" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/首页导航-选中.png" />
+    <BitmapImage x:Key="LaftTabBack" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/左侧导航菜单背景.png" />
+    <BitmapImage x:Key="DecorateLeft" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/装饰1.png" />
+    <BitmapImage x:Key="ArrowLeft" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/箭头左.png" />
+    <BitmapImage x:Key="YuanHuan" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/圆环2.png" />
+    <BitmapImage x:Key="taskCenterDetailbg" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/taskCenterDetailbg.png" />
+    <BitmapImage x:Key="QWReportDetailModify" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/修改.png"/>
+    
+    <BitmapImage x:Key="MenuFlag" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MenuFlag.png"/>
+    <BitmapImage x:Key="QWControlCircle" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/防控圈.png"/>
+    <BitmapImage x:Key="DutyMapIcon" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapIcon.png"/>
+
+    
+    <BitmapImage x:Key="SettingModify" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/CarSetting/编辑.png"/>
+    <BitmapImage x:Key="SettingDel" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/CarSetting/删除.png"/>
+
+    <BitmapImage x:Key="PoliceCar" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/CarSetting/警车.png"/>
+    <BitmapImage x:Key="Moto" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/CarSetting/摩托.png"/>
+    <BitmapImage x:Key="MobileoliceStation" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/CarSetting/流动警务站.png"/>
+
+    <BitmapImage x:Key="PointSelect" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/点选.png"/>
+    <BitmapImage x:Key="RectSelect" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/框选.png"/>
+    <BitmapImage x:Key="ClearSelect" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/清除.png"/>
+    <BitmapImage x:Key="CircleSelect" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/圈选.png"/>
+    <BitmapImage x:Key="LineSelect" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/线选.png"/>
+    <BitmapImage x:Key="PolygonSelect" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/自由选择.png"/>
+
+    <BitmapImage x:Key="DutyStartBg" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/环1.png"/>
+
+
+    <BitmapImage x:Key="DutyExport" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/导出.png"/>
+
+
+    <BitmapImage x:Key="Remind" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/铃铛.png"/>
+    <BitmapImage x:Key="Warn" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/tixing.png"/>
+    <BitmapImage x:Key="Change" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/刷新.png"/>
+
+    <BitmapImage x:Key="btnNext" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/btnNext.png"/>
+
+
+
+    <BitmapImage x:Key="MapPannelBg" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/圈选资源背景.png"/>
+    <BitmapImage x:Key="MapPannelTitleBg" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/MapTool/圈选资源标题背景.png"/>
+    <BitmapImage x:Key="专题勤务部署统计背景" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/专题勤务部署统计背景.png"/>
+    <BitmapImage x:Key="未报备" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/未报备.png"/>
+    <BitmapImage x:Key="已报备" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/已报备.png"/>
+    <BitmapImage x:Key="安保区域背景" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/安保区域背景.png"/>
+    <BitmapImage x:Key="区域名称" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/区域名称.png"/>
+
+    <BitmapImage x:Key="Template" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/Template.png"/>
+
+
+
+    <BitmapImage x:Key="SpeacialDuty编辑按钮" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/编辑按钮.png"/>
+    <BitmapImage x:Key="SpeacialDuty拷贝按钮" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/Copy.png"/>
+    <BitmapImage x:Key="SpeacialDuty查看按钮" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/查看按钮.png"/>
+    <BitmapImage x:Key="SpeacialDuty关闭按钮" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/关闭按钮.png"/>
+    <BitmapImage x:Key="SpeacialDuty新增" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/新增.png"/>
+    <BitmapImage x:Key="SpeacialDuty关联" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/关联.png"/>
+    <BitmapImage x:Key="SpeacialDuty绘点" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/绘点.png"/>
+    <BitmapImage x:Key="SpeacialDuty绘线" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/绘线.png"/>
+    <BitmapImage x:Key="SpeacialDuty绘面" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/绘面.png"/>
+    <BitmapImage x:Key="SpeacialDuty总指挥部" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/总指挥部.png"/>
+    <BitmapImage x:Key="SpeacialDuty分指挥部" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/分指挥部.png"/>
+    <BitmapImage x:Key="SpeacialDuty前指挥部" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/前指挥部.png"/>
+    <BitmapImage x:Key="SpeacialDuty点" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/点.png"/>
+    <BitmapImage x:Key="SpeacialDuty面" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/面.png"/>
+    <BitmapImage x:Key="SpeacialDuty线" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/线.png"/>
+    <BitmapImage x:Key="SpeacialDuty定位" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/定位.png"/>
+    <BitmapImage x:Key="SpeacialDuty已定位" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/已定位.png"/>
+    <BitmapImage x:Key="SpeacialDuty载入" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/载入.png"/>
+    <BitmapImage x:Key="SpeacialDuty治安警力" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/治安警力.png"/>
+    <BitmapImage x:Key="SpeacialDuty按钮背景" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/按钮背景.png"/>
+    <BitmapImage x:Key="SpeacialDuty圆角矩形" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/圆角矩形.png"/>
+    <BitmapImage x:Key="SpeacialDuty路线" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/luxian.png"/>
+    <BitmapImage x:Key="SpeacialDuty呼叫按钮" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/呼叫1.png"/>
+    <BitmapImage x:Key="SpeacialDuty场馆" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/场馆.png"/>
+
+    <BitmapImage x:Key="守点"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/守点.png"/>
+    <BitmapImage x:Key="备勤"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/DutyType/备勤.png"/>
+    <BitmapImage x:Key="排爆"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/排爆.png"/>
+    <BitmapImage x:Key="反恐攻坚"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/反恐攻坚.png"/>
+    <BitmapImage x:Key="应急处突"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/应急处突.png"/>
+    <BitmapImage x:Key="巡逻"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/巡逻.png"/>
+    <BitmapImage x:Key="交通"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/交通.png"/>
+    <BitmapImage x:Key="船"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/船.png"/>
+    <BitmapImage x:Key="直升机"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/直升机.png"/>
+    <BitmapImage x:Key="防核生化"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/防核生化.png"/>
+    <BitmapImage x:Key="供电" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/供电.png"/>
+    <BitmapImage x:Key="供水" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/供水.png"/>
+    <BitmapImage x:Key="救援"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/救援.png"/>
+    <BitmapImage x:Key="应急救援"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/应急救援.png"/>
+    <BitmapImage x:Key="中国电信"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/电信运营商.png"/>
+    <BitmapImage x:Key="志愿者"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/志愿者.png"/>
+    <BitmapImage x:Key="保安"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/保安.png"/>
+    <BitmapImage x:Key="警校学员"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/警校学员.png"/>
+    <BitmapImage x:Key="军队"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/军队.png"/>
+    <BitmapImage x:Key="外地公安"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/外地公安.png"/>
+    <BitmapImage x:Key="武警"   UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/NewDutyType/武警.png"/>
+
+    <BitmapImage x:Key="打现形大队" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/打现形大队.png"/>
+    <BitmapImage x:Key="交警" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/交警.png"/>
+    <BitmapImage x:Key="快反群众力量" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/快反群众力量.png"/>
+    <BitmapImage x:Key="特警警力" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/特警警力.png"/>
+    <BitmapImage x:Key="特勤警力" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/特勤警力.png"/>
+    <BitmapImage x:Key="武警警力" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/武警警力.png"/>
+    <BitmapImage x:Key="消防警力" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/消防警力.png"/>
+    <BitmapImage x:Key="治安警力" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/治安警力.png"/>
+    <BitmapImage x:Key="巡逻快骑队" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/巡逻快骑队.png"/>
+    <BitmapImage x:Key="防爆力量" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/防爆力量.png"/>
+    <BitmapImage x:Key="救援力量" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/救援力量.png"/>
+    <BitmapImage x:Key="防核生化力量" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/PoliceType/防核生化力量.png"/>
+
+
+    <!-- *************************BitmapImage************************* -->
+    <!--部署信息-->
+    <BitmapImage x:Key="部署信息_序号背景" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/部署信息_序号背景.png"/>
+    <BitmapImage x:Key="分割线" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/分割线.png"></BitmapImage>
+    <BitmapImage x:Key="标题圆角矩形" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/标题圆角矩形.png"></BitmapImage>
+    <BitmapImage x:Key="部署详情弹窗背景" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/部署bg.png"></BitmapImage>
+    <BitmapImage x:Key="专题勤务弹框背景标题栏" UriSource="/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Images/SpecialDuty/标题空.png"></BitmapImage>
+
+</ResourceDictionary>

@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Style and template for the DataGridRow.-->
+    <Style  TargetType="DataGridRow">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Height" Value="20"/>
+        
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+
+    <!--Style and template for the DataGridColumnHeader.-->
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        <Setter Property="BorderBrush" Value="#cecece"/>
+        <Setter Property="Background" Value="#d4f9d7"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
+</ResourceDictionary>

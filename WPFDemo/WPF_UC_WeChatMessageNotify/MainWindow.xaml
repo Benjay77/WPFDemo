@@ -1,0 +1,24 @@
+﻿<Window x:Class="WPF_UC_WeChatMessageNotify.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WPF_UC_WeChatMessageNotify"
+        Title="MainWindow" Height="480" Width="320"
+        Loaded="Window_Loaded"
+        FontFamily="Microsoft YaHei">
+    <Grid x:Name="container">
+        <Grid.Background>
+            <ImageBrush ImageSource="002.jpg"/>
+        </Grid.Background>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            <Button x:Name="btnPlus" Content="+" Click="btnPlus_Click"/>
+            <Button x:Name="btnReduce" Content="-" Click="btnReduce_Click"/>
+        </StackPanel>
+
+        <local:PromptableButton x:Name="button" Grid.Row="1" CoverImageSource="nav_12.png" Width="60" Height="60" SnapsToDevicePixels="True"/>
+    </Grid>
+</Window>

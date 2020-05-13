@@ -1,0 +1,300 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   
+                    xmlns:c="clr-namespace:JP.HCZZP.WPFApp.Infrastructure.Controls;assembly=JP.HCZZP.WPFApp.Infrastructure"
+                    xmlns:cnvt="clr-namespace:JP.HCZZP.WPFApp.Infrastructure.Converter;assembly=JP.HCZZP.WPFApp.Infrastructure"
+                    >
+
+    <cnvt:EqualToBoolConverter x:Key="EqualToBoolConverter"/>
+    <Style x:Key="StepBarItemOnQinWu" TargetType="{x:Type c:StepBarItem}">
+        <!--设置字体-->
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei" />
+        <Setter Property="Foreground" Value="#A4A9AF"></Setter>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="HeaderContent" Value="{x:Null}"/>
+        <Setter Property="Fill" Value="#00D2FF"/> <!--3399FF--> 
+        <Setter Property="UseLayoutRounding" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type c:StepBarItem}">
+                    <Grid x:Name="root">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" Name="col1"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" Name="col3"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock MinHeight="20" x:Name="HeaderText" Foreground="{TemplateBinding Foreground}" Margin="0 10" Grid.Column="1">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}.{1}"  >
+                                    <Binding Path="Number" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="Header"  />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <Rectangle Height="1" Margin="0" VerticalAlignment="Center" x:Name="PART_Rectangle1" Grid.Row="1" Fill="#440187BD" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="50"/>
+                        <Rectangle Height="1" Margin="0" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" x:Name="PART_Rectangle2" Fill="#440187BD" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="50"/>
+                        <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Height="1" x:Name="PART_RectangleLeft"  Fill="#440187BD" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="0"/>
+                            <Rectangle Height="1" Grid.Column="2" x:Name="PART_RectangleRight" Fill="#440187BD" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="0"/>
+                            <Grid  Grid.Column="1">
+                                <Ellipse x:Name="PART_Progress_NoFinish" Fill="{TemplateBinding Foreground}"  Stretch="Uniform" Width="12" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                <Ellipse x:Name="PART_Progress_Finish" Fill="{TemplateBinding Fill}"  Stretch="Uniform" Width="12" Height="12" Opacity="0"  
+                                       >
+                                </Ellipse>
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Value="True">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource EqualToBoolConverter}">
+                                    <Binding Path="Progress" NotifyOnTargetUpdated="True" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource AncestorType={x:Type c:StepBar},Mode=FindAncestor}"/>
+                                    <Binding Path="Number" NotifyOnTargetUpdated="True" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource Self}"/>
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <!--<Setter TargetName="HeaderText" Property="Foreground" Value="#00D2FF"/>-->
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.5" Storyboard.TargetName="PART_Progress_Finish" Storyboard.TargetProperty="Opacity" To="1" />
+                                        <ColorAnimation BeginTime="0:0:0" Duration="0:0:0.5" Storyboard.TargetName="HeaderText" Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)" To="#00D2FF"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.5" Storyboard.TargetName="PART_Progress_Finish" Storyboard.TargetProperty="Opacity" To="0" />
+                                        <ColorAnimation BeginTime="0:0:0" Duration="0:0:0.5" Storyboard.TargetName="HeaderText" Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)" To="#A4A9AF"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsLastItem,RelativeSource={RelativeSource Self}}" Value="True">
+                            <Setter TargetName="PART_RectangleRight" Property="Visibility" Value="Hidden" />
+                            <Setter TargetName="PART_Rectangle2" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="col3" Property="Width" Value="Auto" />
+
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFirstItem,RelativeSource={RelativeSource Self}}" Value="True">
+                            <Setter TargetName="PART_RectangleLeft" Property="Visibility" Value="Hidden" />
+                            <Setter TargetName="PART_Rectangle1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="col1" Property="Width" Value="Auto" />
+                        </DataTrigger>
+
+                        <!--<DataTrigger Binding="{Binding IsFinish,RelativeSource={RelativeSource Self}}" Value="True">
+
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFinish,RelativeSource={RelativeSource Self}}" Value="False">
+
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFinish}" Value="True">
+
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Visible" />
+                        </DataTrigger>-->
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type c:StepBarItem}">
+                    <Grid x:Name="root">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <ContentPresenter Grid.Row="0" x:Name="Header"
+                                          Content="{TemplateBinding HeaderContent}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Height="1" x:Name="PART_Rectangle1" Fill="#440187BD" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="50"/>
+
+                            <Grid Margin="0,10,0,10" Grid.Column="1">
+                                <Rectangle x:Name="PART_Progress_NoFinish" Fill="#A4A9AF" Stretch="Uniform" Width="12" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                <Rectangle x:Name="PART_Progress_Finish" Fill="#00D2FF" Stretch="Uniform" Width="12"  Height="12" Visibility="Collapsed"  
+                                      HorizontalAlignment="Left" >
+                                    <Rectangle.ToolTip>
+                                        <c:ToolTip PlacementEx="BottomCenter" Content="{TemplateBinding ToolTipContent}" Placement="Relative" Background="CadetBlue" >
+                                        </c:ToolTip>
+                                    </Rectangle.ToolTip>
+                                </Rectangle>
+
+                            </Grid>
+                            
+                            <Rectangle Height="1" x:Name="PART_Rectangle2" Fill="#009BFF" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="50"/>
+                        </Grid>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsLastItem}" Value="True">
+                            <Setter TargetName="PART_Rectangle2" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFirstItem}" Value="True">
+                            <Setter TargetName="PART_Rectangle1" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsLastItem}" Value="False">
+                            <Setter TargetName="PART_Rectangle2" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFirstItem}" Value="False">
+                            <Setter TargetName="PART_Rectangle1" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFinish}" Value="True">
+                            <Setter TargetName="PART_Progress_NoFinish" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFinish}" Value="False">
+                            <Setter TargetName="PART_Progress_NoFinish" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        
+                        
+                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+    </Style>
+    <Style x:Key="StepBarOnTime" TargetType="{x:Type c:StepBarItem}">
+        <!--设置字体-->
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="{DynamicResource XSmallFontSize}" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei" />
+        <Setter Property="Foreground" Value="#C9CED2"></Setter>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="HeaderContent" Value="{x:Null}"/>
+        <Setter Property="Fill" Value="#03EBFF"/>
+        <!--3399FF--> 
+        <Setter Property="UseLayoutRounding" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type c:StepBarItem}">
+                    <Grid x:Name="root">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" Name="col1"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" Name="col3"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock MinHeight="20" HorizontalAlignment="Center" Text="{Binding Item1}" x:Name="HeaderText" Foreground="{TemplateBinding Foreground}" Margin="0 10" Grid.Row="1" FontSize="{TemplateBinding FontSize}" Grid.ColumnSpan="3">
+                            
+                        </TextBlock>
+                        <Grid  Grid.Column="1">
+                            <Ellipse x:Name="PART_Progress_NoFinish" Fill="{TemplateBinding Foreground}"  Stretch="Uniform" Width="12" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                            <Ellipse x:Name="PART_Progress_Finish" Fill="{TemplateBinding Fill}"  Stretch="Uniform" Width="12" Height="12" Opacity="0"  
+                                       >
+                            </Ellipse>
+                        </Grid>
+                        <Rectangle Height="1" Margin="0" VerticalAlignment="Center" x:Name="PART_Rectangle1" Fill="#440187BD" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="20"/>
+                        <Rectangle Height="1" Margin="0" VerticalAlignment="Center" Grid.Column="2" x:Name="PART_Rectangle2" Fill="#440187BD" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" MinWidth="20"/>
+                        
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Item2}" Value="True">
+                            <Setter Property="Opacity" TargetName="PART_Progress_Finish" Value="1"/>
+                        </DataTrigger>
+                        <DataTrigger Value="True">
+                            
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource EqualToBoolConverter}">
+                                    <Binding Path="Progress" NotifyOnTargetUpdated="True" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource AncestorType={x:Type c:StepBar},Mode=FindAncestor}"/>
+                                    <Binding Path="Number" NotifyOnTargetUpdated="True" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource Self}"/>
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter TargetName="HeaderText" Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Fill}"/>
+                            
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsLastItem,RelativeSource={RelativeSource Self}}" Value="True">
+                            
+                            <Setter TargetName="PART_Rectangle2" Property="Visibility" Value="Hidden" />
+                           
+
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFirstItem,RelativeSource={RelativeSource Self}}" Value="True">
+                            
+                            <Setter TargetName="PART_Rectangle1" Property="Visibility" Value="Hidden" />
+                           
+                        </DataTrigger>
+
+                        <!--<DataTrigger Binding="{Binding IsFinish,RelativeSource={RelativeSource Self}}" Value="True">
+
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFinish,RelativeSource={RelativeSource Self}}" Value="False">
+
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFinish}" Value="True">
+
+                            <Setter TargetName="PART_Progress_Finish" Property="Visibility" Value="Visible" />
+                        </DataTrigger>-->
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+    <!--存放集合-->
+    <Style TargetType="{x:Type c:StepBar}">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource StepBarItemOnQinWu}"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type c:StepBar}">
+                    <Grid x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="1" Grid.Column="1">
+                            <ItemsPresenter />
+                        </Border>
+                        
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <UniformGrid IsItemsHost="True" Rows="1" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

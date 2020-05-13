@@ -1,0 +1,94 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!--默认蓝色-->
+    <SolidColorBrush x:Key="DefaultBlueForeground" Color="#36C4FF"/>
+    <SolidColorBrush x:Key="DefaultTitleBlueForeground" Color="#00C0FF"/>
+    
+    <!--默认颜色-->
+    <SolidColorBrush x:Key="DefaultForeground" Color="White"/>
+
+    <SolidColorBrush x:Key="DefaultForegroundUnavailable" Color="White" Opacity="0.5"/>
+    
+    <!--默认亮色-->
+    <SolidColorBrush x:Key="DefaultLightForeground" Color="#0CFCFF"/>
+    <!--日程里的已经启动勤务背景色-->
+    <SolidColorBrush x:Key="DayDutyBackground" Color="#00A2FF" Opacity="0.4"/>
+    <!--列表数据-->
+    <!--数据框未选中的背景色-->
+    <SolidColorBrush x:Key="ListBoxUnselected" Color="#00264A"/>
+
+    <!--数据框背景色-->
+
+    <SolidColorBrush x:Key="ListBoxSelected" Color="#0063A9"/>
+    <!--数据选中的边框色-->
+    <SolidColorBrush x:Key="ListBoxSelectedBorder" Color="#79EBFF"/>
+
+    <!--数据按钮-->
+    <!--Border填充色-->
+    <SolidColorBrush x:Key="DefaultBorderBackground" Color="#014276" Opacity="0.2"/>
+    <!--Border描边色-->
+    <SolidColorBrush x:Key="DefaultBorderBrush" Color="#0185DC" Opacity="0.2"/>
+    <!--Border上下渐变色-->
+    <LinearGradientBrush x:Key="DefaultBorderGradientBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Offset="0" Color="Transparent"/>
+        <GradientStop Offset="0.5" Color="#0185dc"/>
+        <GradientStop Offset="1" Color="Transparent"/>
+    </LinearGradientBrush>
+
+    <!--逻辑控制的按钮-->
+
+    <SolidColorBrush x:Key="LogicButtonBorderBrush" Color="#00AEEE" Opacity="0.5"/>
+    <SolidColorBrush x:Key="LogicButtonCancelBackgroundBrush" Color="#00BAFF" Opacity="0.7" />
+    <SolidColorBrush x:Key="LogicButtonOKBackgroundBrush" Color="#1AB863" Opacity="0.7" />
+
+    <!--复选框-->
+    <!--默认的复选框边框-->
+    <SolidColorBrush x:Key="DefaultCheckBoxBorderBrush" Color="#01E9FF"/>
+    <!--GroupBox标题方格色-->
+    <SolidColorBrush x:Key="GroupBoxTitleRectangleForeground" Color="#009AFF"/>
+    <!--Text渐变，只设置类似标题的-->
+    <LinearGradientBrush x:Key="TextBlockGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="1" Color="#248bff"/>
+        <GradientStop Offset="0" Color="#00f0ff"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TextBlockReverseGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="#00f0ff"/>
+        <GradientStop Offset="1" Color="#248bff"/>
+    </LinearGradientBrush>
+    <!--报备已完成 绿色-->
+    <SolidColorBrush x:Key="ReportFinish" Color="#00FF66"/>
+    <!--报备未达标 黄色-->
+    <SolidColorBrush x:Key="ReportFail" Color="#FFCC00"/>
+    <!--报备情况未启动 红色-->
+    <SolidColorBrush x:Key="ReportNoStart" Color="#FF002A"/>
+    <!--ItemsControl:DataGrid,Tree-->
+    <system:Double x:Key="HeaderFontSize">14</system:Double>
+    <SolidColorBrush x:Key="HeaderBorderBrush" Color="#A6FFA500"></SolidColorBrush>
+    <SolidColorBrush x:Key="HeaderBackground" Color="#00a0e9" Opacity="0.3"></SolidColorBrush>
+    <SolidColorBrush x:Key="AlternatingRowBackground" Color="#103149" Opacity="0.5"></SolidColorBrush>
+    <SolidColorBrush x:Key="RowBackground" Color="Transparent"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemsContentBackground" Color="#1389D7"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemsAlternationContentBackground" Color="#128EE0"></SolidColorBrush>
+    <SolidColorBrush x:Key="GridLinesBrush" Color="#A6D0C2A7"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemSelectedForeground" Color="White"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemSelectedBackground" Color="#A145F8"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemMouseOverBackground" Color="#BA7DF4"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemMouseOverForeground" Color="White"></SolidColorBrush>
+    
+    <!--设置中的颜色-->
+    <SolidColorBrush x:Key="CarLineBackground" Color="#082E4A" Opacity="0.4"/>
+    <SolidColorBrush x:Key="CarTypeName" Color="#4BA3AF" Opacity="0.4"/>
+    <SolidColorBrush x:Key="CarTitleBall" Color="#90E4EE" />
+
+
+    <SolidColorBrush x:Key="QWLineColor" Color="#12364E" />
+    
+    <SolidColorBrush x:Key="QwKeyText1" Color="#00D2FF" />
+
+    <!--数据框未选中的背景色-->
+    <SolidColorBrush x:Key="ZComBoxUnselected" Color="#00234d"/>
+
+    <SolidColorBrush x:Key="BorderBrush" Color="#1296db"/>
+
+</ResourceDictionary>

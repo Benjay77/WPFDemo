@@ -1,0 +1,43 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <!--颜色值-->
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/Colors.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/Fonts.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/StringFormat.xaml" />
+        
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/Images.xaml" />
+        
+        <!--路径-->
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/PathGeometryData.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/BorderStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/ButtonStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/LabelStyle.xaml" />
+        
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/SelectorPicker.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/DataGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/StepBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/OtherScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/GroupBox.xaml" />
+        
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/TreeViewStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/Combox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/ExpanderStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Template/DutyPlanDataTemplate.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Template/DataTemplate.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Template/DutySettingTemplate.xaml" />
+
+        <!--InfoWindowStyle-->
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/InfoWindowStyle.xaml" />
+
+        <!--以下是部分控件的样式激活-->
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/UserControls/Common/QW_GroupBoxRegionalTitle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
+    

@@ -1,0 +1,541 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:cnvt="clr-namespace:JP.HCZZP.WPFApp.Infrastructure.Converter;assembly=JP.HCZZP.WPFApp.Infrastructure"
+     xmlns:cnvt2="clr-namespace:JP.HCZZP.WPFApp.QW.Modules.ControlLibrary.Converter"
+     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:res="clr-namespace:JP.HCZZP.WPFApp.Instruct.Modules.ResourceLibrary;assembly=JP.HCZZP.WPFApp.Instruct.Modules.ResourceLibrary"
+     xmlns:ip="clr-namespace:JP.HCZZP.WPFApp.Infrastructure;assembly=JP.HCZZP.WPFApp.Infrastructure"
+    xmlns:c="clr-namespace:JP.HCZZP.WPFApp.Infrastructure.Controls;assembly=JP.HCZZP.WPFApp.Infrastructure">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/JP.HCZZP.WPFApp.QW.Modules.ControlLibrary;component/Themes/PathGeometryData.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <cnvt:StringToFontSize x:Key="StringToFontSize"/>
+    <cnvt2:StringSplitConverter x:Key="StringSplitConverter"/>
+    <cnvt2:DataGridCellToDataContext x:Key="DataGridCellToDataContext"/>
+    
+    <!--标题栏样式-->
+    <!--<Style  TargetType="DataGridColumnHeader" >
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Background" Value="White" />
+        <Setter  Property="FontWeight"  Value="Bold"/>
+    </Style>-->
+
+    <Style TargetType="DataGridColumnHeader" x:Key="Duty_DataGridColumnHeader">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Padding" Value="10 0"/>
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static res:CustomResources.DefaultForeKey}}" />
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="{DynamicResource HeaderBackground}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridColumnHeader">
+                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" x:Name="BackgroundBorder"
+                              Width="Auto">
+                        <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" Tag="{Binding RelativeSource={RelativeSource Self},Converter={StaticResource StringToFontSize}}" TextAlignment="Center" TextTrimming="None" FontSize="{DynamicResource {x:Static res:CustomResources.OneSizeKey}}" LineHeight="10" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    <!--行样式触发-->
+    <!--背景色改变必须先设置cellStyle 因为cellStyle会覆盖rowStyle样式-->
+    <Style  TargetType="DataGridRow" x:Key="Duty_DataGridRow">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultSmalFontSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridRow">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"  Name="DGR_Border" UseLayoutRounding="False" SnapsToDevicePixels="True">
+                        <Grid>
+                            <Rectangle Fill="{DynamicResource HeaderBackground}" Name="MouseoverRectangle" Opacity="0" Stretch="Fill"/>
+                            <Rectangle Fill="{DynamicResource HeaderBackground}"  Name="SelectedRectangle" Opacity="0" Stretch="Fill"/>
+                            <SelectiveScrollingGrid>
+                                <SelectiveScrollingGrid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </SelectiveScrollingGrid.ColumnDefinitions>
+                                <SelectiveScrollingGrid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </SelectiveScrollingGrid.RowDefinitions>
+                                <DataGridCellsPresenter ItemsPanel="{TemplateBinding ItemsControl.ItemsPanel}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" Grid.Column="1" />
+                                <DataGridDetailsPresenter Visibility="{TemplateBinding DataGridRow.DetailsVisibility}" Grid.Column="1" Grid.Row="1" SelectiveScrollingGrid.SelectiveScrollingOrientation="Both" />
+                                <DataGridRowHeader Visibility="Visible" Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" />
+                            </SelectiveScrollingGrid>
+                        </Grid>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!--<Setter Property="Background" Value="{DynamicResource HeaderBackground}"/>
+                <Setter Property="Opacity" Value="0.8"/>-->
+                            <!--<Setter Property="Foreground" Value="White"/>-->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.25" Storyboard.TargetName="MouseoverRectangle" Storyboard.TargetProperty="Opacity" To="0.5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.25" Storyboard.TargetName="MouseoverRectangle" Storyboard.TargetProperty="Opacity" To="0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <!--<Setter Property="Background" Value="{DynamicResource HeaderBackground}"/>-->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.25" Storyboard.TargetName="SelectedRectangle" Storyboard.TargetProperty="Opacity" To="1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.25" Storyboard.TargetName="SelectedRectangle" Storyboard.TargetProperty="Opacity" To="0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!--隔行换色-->
+            <Trigger Property="AlternationIndex" Value="0" >
+                <Setter Property="Background" Value="Transparent" />
+            </Trigger>
+            <Trigger Property="AlternationIndex" Value="1" >
+                <Setter Property="Background" Value="#0AFFFFFF" />
+            </Trigger>
+
+            <!--<Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HeaderBackground}"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HeaderBackground}"/>
+            </Trigger>-->
+        </Style.Triggers>
+    </Style>
+
+    <Style  TargetType="DataGridRow" x:Key="DataGridWithoutRow">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultSmalFontSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridRow">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"  Name="DGR_Border" UseLayoutRounding="False" SnapsToDevicePixels="True">
+                        <Grid>
+                            <SelectiveScrollingGrid>
+                                <SelectiveScrollingGrid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </SelectiveScrollingGrid.ColumnDefinitions>
+                                <SelectiveScrollingGrid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </SelectiveScrollingGrid.RowDefinitions>
+                                <DataGridCellsPresenter ItemsPanel="{TemplateBinding ItemsControl.ItemsPanel}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" Grid.Column="1" />
+                                <DataGridDetailsPresenter Visibility="{TemplateBinding DataGridRow.DetailsVisibility}" Grid.Column="1" Grid.Row="1" SelectiveScrollingGrid.SelectiveScrollingOrientation="Both" />
+                                <DataGridRowHeader Visibility="Visible" Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" />
+                            </SelectiveScrollingGrid>
+                        </Grid>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!--隔行换色-->
+            <Trigger Property="AlternationIndex" Value="0" >
+                <Setter Property="Background" Value="Transparent" />
+            </Trigger>
+            <Trigger Property="AlternationIndex" Value="1" >
+                <Setter Property="Background" Value="#0AFFFFFF" />
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="DataGridCell" x:Key="DataGridCellConverterOnReportSplit">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <Border Background="#00000000" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <Grid VerticalAlignment="Center" DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell,Mode=FindAncestor},Converter={StaticResource DataGridCellToDataContext}}" HorizontalAlignment="Center" Margin="5 0" x:Name="GridRoot">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!--实际值-->
+                            <TextBlock Foreground="{DynamicResource {x:Static res:CustomResources.DefaultForeKey}}" FontSize="{DynamicResource {x:Static res:CustomResources.OneSizeKey}}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"  x:Name="FactValue"  Text="{Binding Item1}"/>
+                            <StackPanel Orientation="Horizontal" Grid.Column="1" x:Name="ContrastStackPanel">
+                                <TextBlock ip:ControlAttachProperty.AutoToolTip="False" Text="/"/>
+                                <!--计划值-->
+                                <TextBlock x:Name="PlanValue" Foreground="{DynamicResource DefaultForeground}"  Text="{Binding Item2}" Margin="0,0,5,0"/>
+                                <Path Data="{StaticResource SolidArrow}" x:Name="PathIcon" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" Width="7" Fill="{Binding ElementName=FactValue,Path=Foreground}">
+                                    <Path.RenderTransform>
+                                        <RotateTransform Angle="180"/>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </StackPanel>
+                            
+                            <!--特殊按钮-->
+                            <Button x:Name="EditButton" Visibility="Collapsed" Style="{DynamicResource ButtonWithoutBackground}" Command="{Binding DataContext.DutyStandardDistributeCommand,RelativeSource={RelativeSource AncestorType=DataGrid,Mode=FindAncestor}}"  CommandParameter="{Binding RelativeSource={RelativeSource Self}}">
+                                <Path Data="{DynamicResource UpdateInfo}" Height="18" Width="18" Stretch="Fill" Fill="#0696D3"/>
+                            </Button>
+                            <Button x:Name="TipButton" Content="提醒" Width="70" Tag="{Binding Item2}" Height="22" Visibility="Collapsed" Style="{DynamicResource RoundedCornerButtonStyle}" Command="{Binding DataContext.RemindCommand,RelativeSource={RelativeSource AncestorType=DataGrid,Mode=FindAncestor}}"  CommandParameter="{Binding RelativeSource={RelativeSource Self}}">
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=GridRoot,Path=DataContext.Item1}" Value="Edit">
+                            <Setter Property="Visibility" TargetName="EditButton" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="FactValue" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=GridRoot,Path=DataContext.Item1}" Value="Tip">
+                            <Setter Property="Visibility" TargetName="TipButton" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="FactValue" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=GridRoot,Path=DataContext.Item3}" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="ContrastStackPanel" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger  Binding="{Binding ElementName=GridRoot,Path=DataContext.Item3}" Value="True">
+                            <Setter TargetName="FactValue" Property="Foreground" Value="{DynamicResource ReportFinish}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=GridRoot,Path=DataContext.Item3}" Value="False">
+                            <Setter TargetName="FactValue" Property="Foreground" Value="{DynamicResource ReportFail}"/>
+                            <Setter Property="RenderTransform" TargetName="PathIcon" >
+                                <Setter.Value>
+                                    <RotateTransform Angle="0"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="DataGridCell" x:Key="DataGridCellAutoColumnEdit">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="IsEditing" Value="False"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <c:NumbericTextBox MaxValue="999" MinValue="0" Precision="0" Focusable="True" MaxLength="3" x:Name="EditText" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding CanEdit}" 
+                             DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell,Mode=FindAncestor},Converter={StaticResource DataGridCellToDataContext}}" 
+                             Style="{DynamicResource DutyTextBoxNormalStyle}"  Background="Transparent" BorderBrush="Transparent"  Text="{Binding ShowContent,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.MetaValueChangedCommand,ElementName=DecomposePlanPage}" CommandParameter="{Binding ElementName=EditText}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </c:NumbericTextBox>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=EditText,Path=DataContext.CanEdit}" Value="True">
+                            <Setter Property="Width" TargetName="EditText" Value="120"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="DataGridCell" x:Key="DataGridCellAutoColumnShow">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="IsEditing" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"  DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell,Mode=FindAncestor},Converter={StaticResource DataGridCellToDataContext}}"  Background="Transparent"  Text="{Binding ShowContent}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--单元格样式触发-->
+    <Style TargetType="DataGridCell" x:Key="Duty_DataGridCell">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <Border Background="#00000000" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" >
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+        <Style.Triggers>
+            <Trigger Property="IsEditing" Value="True">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--单元格样式触发 报备详情显示界面-->
+    <Style TargetType="DataGridCell" x:Key="DutyReportDetail_DataGridCell">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <Border Background="#00000000" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell,Mode=FindAncestor},Path=Content.Text}" Tag="{Binding RelativeSource={RelativeSource Self},Converter={StaticResource StringToFontSize}}" TextAlignment="Center" TextTrimming="CharacterEllipsis" FontSize="{DynamicResource SmallFontSize}" LineHeight="10" TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsEditing" Value="True">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type DataGrid}" x:Key="DutyDataGrid">
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="AlternationCount" Value="2"/>
+        <Setter Property="AlternatingRowBackground" Value="Red"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="CanUserResizeColumns" Value="False"/>
+        <Setter Property="CanUserReorderColumns" Value="False"/>
+        <Setter Property="EnableRowVirtualization" Value="True"/>
+        <Setter Property="CanUserSortColumns" Value="False"/>
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+        <Setter Property="GridLinesVisibility" Value="Vertical"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="SelectedIndex" Value="-1"/>
+        <Setter Property="RowBackground" Value="Yellow"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+        <Setter Property="CellStyle" Value="{StaticResource Duty_DataGridCell}"/>
+        <Setter Property="RowStyle" Value="{StaticResource Duty_DataGridRow}"/>
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource Duty_DataGridColumnHeader}"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Padding" Value="0 0 5 5"/>
+        
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGrid">
+                    <ControlTemplate.Resources>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="TextBlock.LineHeight" Value="16"/>
+                            <Setter Property="ip:ControlAttachProperty.CornerRadius" Value="1"/>
+                            <Setter Property="Padding" Value="3"/>
+                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="FontSize" Value="{DynamicResource SmallFontSize}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="TextAlignment" Value="Left"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type TextBox}">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding ip:ControlAttachProperty.CornerRadius}" Padding="{TemplateBinding Padding}">
+                                            <Grid>
+                                                <ScrollViewer Style="{DynamicResource ScrollViewerOnQWDuty}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" CanContentScroll="True"  ip:ControlAttachProperty.IsSpecial="True" />
+                                                <!--<TextBlock x:Name="WaterMark" ip:ControlAttachProperty.AutoToolTip="False" Focusable="False" Visibility="Collapsed" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{TemplateBinding Tag}" Margin="4 4 00 0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Opacity="0.4"/>-->
+                                            </Grid>
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+                                            <!--<Trigger Property="Text" Value="">
+                                                <Setter Property="Visibility" TargetName="WaterMark" Value="Visible"/>
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="{x:Null}">
+                                                <Setter Property="Visibility" TargetName="WaterMark" Value="Visible"/>
+                                            </Trigger>-->
+                                            <Trigger Property="IsKeyboardFocused" Value="true">
+
+                                            </Trigger>
+                                            <Trigger Property="UIElement.IsFocused" Value="True">
+
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ControlTemplate.Resources>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        
+                        <!--<DataGridColumnHeadersPresenter />-->
+                        <ScrollViewer BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Name="DG_ScrollViewer" Focusable="False" Padding="{TemplateBinding Padding}" ip:ControlAttachProperty.IsSpecial="True"  CanContentScroll="False" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Style="{StaticResource ScrollViewerOnQWDuty}">
+                            <ScrollViewer.Template>
+                                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                    <Grid x:Name="Bd" Background="#00000000">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <DataGridColumnHeadersPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Name="PART_ColumnHeadersPresenter"/>
+                                        <Border BorderThickness="{TemplateBinding BorderThickness}" Margin="0" BorderBrush="{TemplateBinding BorderBrush}" Grid.RowSpan="2" SnapsToDevicePixels="True">
+                                           
+                                        </Border>
+                                        <ScrollContentPresenter HorizontalAlignment="Stretch" Margin="0" x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" Grid.Row="1"
+							CanHorizontallyScroll="False" CanVerticallyScroll="False" Content="{TemplateBinding Content}"
+							ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                        <ScrollBar Margin="7 0 0 0" Style="{StaticResource ScrollBarDefault}" x:Name="PART_VerticalScrollBar" Background="{TemplateBinding Background}" Padding="0" HorizontalAlignment="Right"  AutomationProperties.AutomationId="VerticalScrollBar" Grid.Row="1" Grid.Column="1" Cursor="Arrow" 
+							Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+							Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}"/>
+                                        <ScrollBar Style="{StaticResource ScrollBarDefault}" x:Name="PART_HorizontalScrollBar" Background="{TemplateBinding Background}" Margin="0 7 0 0" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="0" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" 
+							Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+							Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        
+                                        <Trigger Property="VerticalScrollBarVisibility" Value="Disabled">
+                                            <Setter TargetName="PART_VerticalScrollBar" Property="Visibility" Value="Collapsed"/>
+                                        </Trigger>
+                                        <Trigger Property="VerticalScrollBarVisibility" Value="Hidden">
+                                            <Setter TargetName="PART_VerticalScrollBar" Property="Visibility" Value="Collapsed"/>
+                                        </Trigger>
+                                        <Trigger Property="HorizontalScrollBarVisibility" Value="Disabled">
+                                            <Setter TargetName="PART_HorizontalScrollBar" Property="Visibility" Value="Collapsed"/>
+                                        </Trigger>
+                                        <EventTrigger RoutedEvent="MouseEnter" SourceName="Bd">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetName="PART_VerticalScrollBar" Storyboard.TargetProperty="Opacity" To="1" />
+                                                    <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetName="PART_HorizontalScrollBar" Storyboard.TargetProperty="Opacity" To="1" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+
+                                        <EventTrigger RoutedEvent="MouseLeave" SourceName="Bd">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.3" Storyboard.TargetName="PART_VerticalScrollBar" Storyboard.TargetProperty="Opacity"
+                                                     To="0.6" />
+                                                    <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0.3" Storyboard.TargetName="PART_HorizontalScrollBar" Storyboard.TargetProperty="Opacity"
+                                                     To="0.6" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ScrollViewer.Template>
+                            <Border BorderThickness="{TemplateBinding BorderThickness}"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  BorderBrush="{TemplateBinding BorderBrush}"  SnapsToDevicePixels="True">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                            </Border>
+
+                        </ScrollViewer>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+</ResourceDictionary>

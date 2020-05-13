@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="RCApp_Win.View.Common.UC_TextBoxPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RCApp_Win.View.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="75" Background="Transparent">
+    <!--<Border BorderThickness="1" BorderBrush="LightGray">-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>-->
+        <!--<local:UC_TextBox x:Name="txt_TextPopup" Grid.Row="0"  Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_TextBoxPopup}}}"-->
+        <!--TextWrapping="NoWrap" Height="24" VerticalAlignment="Top" IsReadOnly="True" PreviewMouseLeftButtonDown="txt_TextPopup_PreviewMouseLeftButtonDown"/>-->
+        <TextBox x:Name="txt_TextPopup" Grid.Row="0" Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_TextBoxPopup}}}" 
+                         TextWrapping="NoWrap" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"
+                         PreviewMouseLeftButtonDown="txt_TextPopup_PreviewMouseLeftButtonDown" MouseLeave="chk_Togglet_MouseLeave" Cursor="Hand"/>
+        <CheckBox x:Name="chk_Togglet"  Height="24" Content="" Margin="2,1,0,0" Style="{StaticResource arrowCheckBoxStyle}" MouseEnter="chk_Togglet_MouseEnter"
+                          MouseLeave="chk_Togglet_MouseLeave" HorizontalAlignment="Right"/>
+        <!--<ToggleButton Name="tg_TextPopup" Width="0" Background="Transparent"/>-->
+        <Popup Name="popup_TextPopup" Grid.Row="1" AllowsTransparency="True" Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_ButtonPopup}}}" 
+                           IsOpen="{Binding ElementName=chk_Togglet, Path=IsChecked, Mode=TwoWay}" MouseLeave="chk_Togglet_MouseLeave">
+            <Border BorderThickness="1" BorderBrush="LightGray" Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_TextBoxPopup}}}" Height="Auto">
+                <ListBox x:Name="listBox_TextPopup" Style="{StaticResource MenuListBoxStyle}" Width="auto" Height="auto" HorizontalContentAlignment="Center"
+                         Background="#ffffff" BorderThickness="0" Grid.RowSpan="2" >
+                    <ListBox.Resources>
+                        <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+                            <Setter Property="SnapsToDevicePixels" Value="true"/>
+                            <Setter Property="OverridesDefaultStyle" Value="true"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <local:UC_RadioButton x:Name="radioButton" Content="{TemplateBinding Content}" Style="{StaticResource RadioBtn_gdHead_Style1}" 
+                                                                  GroupName="TextPopup" FontSize="12" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="{Binding Path=Width,RelativeSource={RelativeSource AncestorType={x:Type local:UC_TextBoxPopup}}}"
+                                                                  IsChecked="{Binding Path=IsSelected, Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}">
+                                        </local:UC_RadioButton>
+                                        <ControlTemplate.Triggers>
+                                            <!--<Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Foreground" Value="#000000" TargetName="radioButton"/>
+                                            </Trigger>-->
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Background" Value="#47CFA7" TargetName="radioButton"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.Resources>
+                </ListBox>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

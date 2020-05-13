@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="RCApp_Win.View.Common.UC_Pager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RCApp_Win.View.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="410">
+    <UserControl.Resources>
+        <Style TargetType="Label" x:Key="NoMarginLabel">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <!--<Setter Property="Foreground" Value="#f3f3f3" />-->
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBox" x:Key="NormalText">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Button" x:Key="NormalBtn">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" BorderThickness="0" Background="#65c178">
+                            <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="#2e9d5e"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="border" Property="TextBlock.Foreground" Value="#d8d8d8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid DataContext="UC_Pager">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+            <Label Content="共" Style="{StaticResource NoMarginLabel}" Margin="20,0,0,0"/>
+            <Label x:Name="lbl_TotalPage" Content="{Binding TotalPage,RelativeSource={RelativeSource AncestorType={x:Type local:UC_Pager}}}" Style="{StaticResource NoMarginLabel}" Margin="0,0,0,0"/>
+            <Label Content="页，" Style="{StaticResource NoMarginLabel}" Margin="0,0,0,0"/>
+            <Label x:Name="lbl_TotalItem" Content="{Binding TotalItem,RelativeSource={RelativeSource AncestorType={x:Type local:UC_Pager}}}" Style="{StaticResource NoMarginLabel}" Margin="0,0,0,0"/>
+            <Label Content="条记录" Style="{StaticResource NoMarginLabel}" Margin="0,0,10,0"/>
+            <Label Content="每页显示" x:Name="lbl_MaxNoInPage" Visibility="Visible"></Label>
+            <TextBox Height="20" Width="40" x:Name="txt_MaxNoInPage" Text="{Binding Path=PageSize,RelativeSource={RelativeSource AncestorType={x:Type local:UC_Pager}}}"  Visibility="Visible"  KeyDown="txt_MaxNoInPage_KeyDown" TextChanged="TextBox_TextChanged" MaxLength="11"></TextBox>
+            <Label Content="条" x:Name="lbl_item" Margin="-3 0 0 0" Visibility="Visible"></Label>
+            <Label Content="第" Margin="0 0 -3 0"></Label>
+            <TextBox x:Name="txt_PageIndex" Height="20" Width="40" Text="{Binding Path=PageIndex,RelativeSource={RelativeSource AncestorType={x:Type local:UC_Pager}}}"  KeyDown="txt_MaxNoInPage_KeyDown" TextChanged="TextBox_TextChanged" MaxLength="11"/>
+            <Label Content="页" Margin="-3 0 0 0"></Label>  
+            <!--<Label Content="/" Style="{StaticResource NoMarginLabel}" />
+            <Label x:Name="lbl_TotalPage" Content="{Binding TotalPage,RelativeSource={RelativeSource AncestorType={x:Type local:UC_Pager}}}" Style="{StaticResource NoMarginLabel}" />-->
+            <Button x:Name="btn_GotoPage" Content="跳转" Margin="5,5,5,5" Click="GotoPage_Click" Width="39" />
+            <Button x:Name="btn_PrevPage" Content="上一页"  Margin="5,5,5,5" Click="PrevPage_Click"/>
+            <Button x:Name="btn_NextPage" Content="下一页"  Margin="5,5,5,5" Click="NextPage_Click"/> <!--Style="{StaticResource NormalBtn}"-->
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,248 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#505050"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock TextAlignment="Center" VerticalAlignment="Center" Padding="0" Margin="0">
+                           <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center"/>
+                    </TextBlock>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#2e9d5e" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--查询按钮-->
+    <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderThickness="0" Background="#65c178">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="border" Property="Background" Value="#2e9d5e"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonStyleRed" TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderThickness="0" Background="Red">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="border" Property="Background" Value="Red"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- 资料区按钮-->
+    
+     <Style x:Key="data_ButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderThickness="0" Background="#BFBFBF">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger  Property="IsPressed" Value="true">
+                            <Setter TargetName="border" Property="Background" Value="#2e9d5e"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--清空按钮-->
+    <Style x:Key="ButtonStyle3" TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderThickness="0" Background="#bfbfbf">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="border" Property="Background" Value="#959595"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#616161"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#2e9d5e"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
+        <Setter Property="Height" Value="22"/>
+     
+            
+            
+            
+       
+    </Style>
+
+    <Style x:Key="ComboBoxStyle2" TargetType="{x:Type ComboBox}">
+        <Setter Property="Height" Value="22"/>
+    </Style>
+
+    <Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Border BorderThickness="0" Width="30" Height="20">
+                        <Image x:Name="img" Width="19" Height="12" Source="../Images/Common/arrow2.png"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter TargetName="img" Property="Source" Value="../Images/Common/arrow2.png"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="img" Property="Source" Value="../Images/Common/arrow1.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CheckBoxStyle2" TargetType="{x:Type CheckBox}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Border BorderThickness="0" Width="30" Height="20">
+                        <Image x:Name="img" Width="14" Height="8" Source="../Images/Common/arrow-look2.png"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter TargetName="img" Property="Source" Value="../Images/Common/arrow-look2.png"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="img" Property="Source" Value="../Images/Common/arrow-look.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+    <!--checkbox 文字显示-->
+    <Style  x:Key="ckbStyle1" TargetType="{x:Type CheckBox}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Border BorderThickness="0" Name="bg" >
+                        <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="bg" Property="Background" Value="#65c178"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter TargetName="bg" Property="Background" Value="#bfbfbf"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+    </Style>
+     <!--test-->
+    <Style x:Key="for_noresize_window" TargetType="{x:Type Window}">
+        <Setter Property="AllowsTransparency" Value="true"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontFamily" Value="Consolas, Microsoft YaHei"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid Margin="10">
+                        <Rectangle Fill="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"  
+                               RadiusX="5" RadiusY="5">
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Border Background="{TemplateBinding Background}"  
+                            BorderBrush="{TemplateBinding BorderBrush}"  
+                            BorderThickness="{TemplateBinding BorderThickness}"  
+                            Padding="{TemplateBinding Margin}"  
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"  
+                            CornerRadius="5">
+                            <ContentPresenter />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+   
+    
+</ResourceDictionary>
+    
